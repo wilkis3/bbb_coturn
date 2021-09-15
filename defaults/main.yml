@@ -3,7 +3,8 @@
 listening_port: 3478
 min_port: 32769
 max_port: 65535
-listening_ip: '{{ ansible_host }}'
+listening_ip:
+ - '{{ ansible_host }}'
 
 # You need to set the same static authentification secret
 # for this coturn instance here *and* in BigBlueButton.
@@ -19,6 +20,7 @@ realm: ''
 # use_tls to true (recommended).
 use_tls: true
 tls_listening_port: 443
+#tls_listening_port: 5349
 # If you use tls you need to define the directory where
 # your tls certificate files are located.
 # This directory should already exist on the target host.
@@ -29,6 +31,7 @@ tls_cert_dir: '/etc/ssl/certs'
 # that should be copied to the host.
 tls_cert: '{{ tls_cert_dir }}/{{ inventory_hostname }}.cert'
 tls_key: '{{ tls_cert_dir }}/{{ inventory_hostname }}.key'
+tls_dhparams: '/etc/ssl/dhparam.pem'
 # You can specify the coturn tls_group (optional).
 # tls_group:
 
